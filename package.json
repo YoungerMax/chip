@@ -1,0 +1,51 @@
+{
+	"name": "web3hacks",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
+		"cf": "vite build && wrangler pages dev .svelte-kit/cloudflare --env .env",
+		"migrations:generate": "drizzle-kit generate:sqlite",
+		"migrations:push": "wrangler d1 execute DATABASE --local --file=./drizzle/0000_careful_gressill.sql"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20231218.0",
+		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-cloudflare": "^3.0.1",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@types/eslint": "8.56.0",
+		"@typescript-eslint/eslint-plugin": "^6.0.0",
+		"@typescript-eslint/parser": "^6.0.0",
+		"autoprefixer": "^10.4.16",
+		"drizzle-kit": "^0.20.9",
+		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.35.1",
+		"postcss": "^8.4.32",
+		"prettier": "^3.1.1",
+		"prettier-plugin-svelte": "^3.1.2",
+		"svelte": "^4.2.7",
+		"svelte-check": "^3.6.0",
+		"tailwindcss": "^3.4.0",
+		"tslib": "^2.4.1",
+		"typescript": "^5.0.0",
+		"vite": "^5.0.3",
+		"wrangler": "^3.22.1"
+	},
+	"type": "module",
+	"dependencies": {
+		"@auth/sveltekit": "^0.5.0",
+		"@circle-fin/circle-sdk": "^2.6.2",
+		"@tiptap/core": "^2.1.13",
+		"@tiptap/pm": "^2.1.13",
+		"@tiptap/starter-kit": "^2.1.13",
+		"drizzle-orm": "^0.29.2"
+	}
+}

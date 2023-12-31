@@ -1,0 +1,31 @@
+label {
+    font-size: 16px;
+}
+
+input, textarea {
+    padding: 8px;
+    border: 1px #ccc solid;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    resize: none;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    background: #54a0ff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+
+    transition: 0.25s linear background;
+}
+
+input[type="submit"]:hover {
+    background: #2e86de;
+}
