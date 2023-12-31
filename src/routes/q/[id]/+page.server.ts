@@ -53,7 +53,7 @@ export const load: PageServerLoad = async (event) => {
     };
 
     const response = await fetch(url, options);
-    const data = response.json();
+    const data = await response.json();
     console.log(data);
     const balance = data['data']['tokenBalances'][0];
 
