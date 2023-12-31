@@ -43,18 +43,27 @@ export const load: PageServerLoad = async (event) => {
         sorted = [selectedAnswer, ...sorted];
     }
 
-    const url = `https://api.circle.com/v1/w3s/wallets/${question.chip_wallet_id}/balances?pageSize=1`;
-    const options = {
+    const response = await fetch(
+        `https://api.circle.com/v1/w3s/wallets/${question.chip_wallet_id}/balances?pageSize=1`,
+        {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                authorization: 'Bearer ' + event.platform?.env?.CIRCLE_API_KEY!!
+            }
+        }
+    );
+
+    const data = await response.json();
+    console.log(data);
+    console.log(`https://api.circle.com/v1/w3s/wallets/${question.chip_wallet_id}/balances?pageSize=1`,
+    {
         method: 'GET',
         headers: {
             accept: 'application/json',
             authorization: 'Bearer ' + event.platform?.env?.CIRCLE_API_KEY!!
         }
-    };
-
-    const response = await fetch(url, options);
-    const data = await response.json();
-    console.log(data);
+    });
     const balance = data['data']['tokenBalances'][0];
 
     return {
